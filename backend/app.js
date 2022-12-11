@@ -9,6 +9,7 @@ const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const NotFound = require('./errors/NotFound');
+const cors = require('./middlewares/cors');
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
@@ -16,6 +17,8 @@ const app = express();
 
 app.listen(3000);
 app.use(express.json());
+
+app.use(cors);
 
 app.use(requestLogger);
 
