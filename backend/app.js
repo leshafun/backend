@@ -10,12 +10,21 @@ const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const NotFound = require('./errors/NotFound');
-const cors = require('./middlewares/cors');
+const cors = require('cors');
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const app = express();
-app.use('*', cors);
+
+const options = {
+  origin: [
+    'https//mesto.ln.nomoredomains.club/',
+    'https://mesto.ln.nomoredomains.club/',
+  ],
+  credentials: true,
+};
+
+app.use('*', cors(options));
 
 app.listen(3000);
 app.use(express.json());
