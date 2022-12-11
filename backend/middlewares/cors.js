@@ -1,8 +1,8 @@
 const allowedCors = [
-  'http://mesto.ln.nomoredomains.club',
-  'https://mesto.ln.nomoredomains.club',
-  'http://localhost:3000',
-  'https://localhost:3000',
+  'https//mesto.ln.nomoredomains.club/',
+  'https://mesto.ln.nomoredomains.club/',
+  'http://62.84.123.165/',
+  'https://62.84.123.165/',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
