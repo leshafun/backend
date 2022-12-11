@@ -1,0 +1,13 @@
+.login__input {
+    width: 358px;
+    height: 27px;
+    border: none;
+    border-bottom: 1px solid rgba(204, 204, 204, 1);
+    background-color: black;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 30px;
+    padding-bottom: 13px;
+}
