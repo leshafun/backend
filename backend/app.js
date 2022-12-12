@@ -10,6 +10,7 @@ const errorHandler = require('./middlewares/errorHandler');
 const NotFound = require('./errors/NotFound');
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+mongoose.set("strictQuery", false);
 
 const app = express();
 
