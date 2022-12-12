@@ -1,5 +1,5 @@
 const allowedCors = [
-  'https//mesto.ln.nomoredomains.club/',
+  'http//mesto.ln.nomoredomains.club/',
   'https://mesto.ln.nomoredomains.club/',
   'http://62.84.123.165/',
   'https://62.84.123.165/',

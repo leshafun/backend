@@ -11,7 +11,6 @@ const { auth } = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const NotFound = require('./errors/NotFound');
 const cors = require('./middlewares/cors');
-const helmet = require('helmet');
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
@@ -23,8 +22,6 @@ app.use(express.json());
 app.use(cors);
 
 app.use(requestLogger);
-
-app.use(helmet());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
