@@ -14,7 +14,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const app = express();
 
-app.listen(3000);
+app.listen(3001);
 app.use(express.json());
 
 app.use('/users', auth, userRouter);
