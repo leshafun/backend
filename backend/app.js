@@ -17,7 +17,7 @@ const cors = require('cors');
 const options = {
   origin: [
     'http://mesto.ln.nomoredomains.club',
-    'https://api.mesto.ln.nomoredomains.club',
+    'https://mesto.ln.nomoredomains.club',
     'http://localhost:3000',
     'https://localhost:3000',
   ],
