@@ -10,17 +10,33 @@ const { auth } = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const NotFound = require('./errors/NotFound');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
+// const cors = require('./middlewares/cors');
+
+const cors = require('cors');
+
+const options = {
+  origin: [
+    'http://mesto.ln.nomoredomains.club',
+    'https://api.mesto.ln.nomoredomains.club',
+    'http://localhost:3000',
+    'https://localhost:3000',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
 
 mongoose.set('strictQuery', false);
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const app = express();
 
+app.use('*', cors(options));
+
 app.listen(3000);
 app.use(express.json());
-
-app.use(cors);
 
 app.use(requestLogger);
 
