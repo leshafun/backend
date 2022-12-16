@@ -74,7 +74,6 @@ const createUser = (req, res, next) => {
     });
 };
 
-
 // обновляет профиль
 const updateUser = (req, res, next) => {
   const { name, about } = req.body;
