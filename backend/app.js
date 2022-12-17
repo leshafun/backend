@@ -10,6 +10,7 @@ const { auth } = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const NotFound = require('./errors/NotFound');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const BadRequest = require('./errors/BadRequest');
 // const cors = require('./middlewares/cors');
 
 const cors = require('cors');
@@ -60,7 +61,12 @@ app.post('/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().pattern(/https?:\/\/(www\.)?\d?\D{1,}#?/),
+    avatar: Joi.string().custom((value) => {
+      if (!validator.isURL(value, { require_protocol: true })) {
+        throw new BadRequest('Неправильный формат URL адреса');
+      }
+      return value;
+    }),
     email: Joi.string().min(3).required().email(),
     password: Joi.string().required(),
   }),
