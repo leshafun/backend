@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const { errors, celebrate, Joi } = require('celebrate');
 const userRouter = require('./routes/users');
@@ -10,8 +11,6 @@ const { auth } = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const NotFound = require('./errors/NotFound');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
-const cors = require('cors');
 
 const options = {
   origin: [
@@ -32,7 +31,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const app = express();
 
-app.use('*', cors(options));
+app.use(cors(options));
 
 app.listen(3000);
 app.use(express.json());
