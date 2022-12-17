@@ -71,8 +71,7 @@ const createUser = (req, res, next) => {
             next(err);
           }
         });
-    })
-    .catch(next);
+    });
 };
 
 // обновляет профиль
@@ -139,7 +138,7 @@ const getUserInfo = (req, res, next) => {
   User.findById(_id)
     .then((user) => {
       if (!user) {
-        return next(new NotFound('Пользователь не найден'));
+        return next(new Error('Пользователь не найден'));
       }
       return res.status(SUCCESS_OK).send({ data: user });
     })
