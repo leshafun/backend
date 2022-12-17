@@ -66,7 +66,7 @@ app.post('/signup', celebrate({
   }),
 }), createUser);
 
-app.use((req, res, next) => {
+app.use('*', (req, res, next) => {
   const error = new NotFound('Страница не найдена');
   next(error);
 });
