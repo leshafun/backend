@@ -6,6 +6,7 @@ const BadRequest = require('../errors/BadRequest');
 const NotFound = require('../errors/NotFound');
 const { SUCCESS_OK } = require('../utils/constants');
 const { CREATED } = require('../utils/constants');
+
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 // возвращает всех пользователей
@@ -71,7 +72,8 @@ const createUser = (req, res, next) => {
             next(err);
           }
         });
-    });
+    })
+    .catch(next);
 };
 
 // обновляет профиль
@@ -138,7 +140,7 @@ const getUserInfo = (req, res, next) => {
   User.findById(_id)
     .then((user) => {
       if (!user) {
-        return next(new Error('Пользователь не найден'));
+        return next(new NotFound('Пользователь не найден'));
       }
       return res.status(SUCCESS_OK).send({ data: user });
     })
