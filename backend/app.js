@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 
 const { errors, celebrate, Joi } = require('celebrate');
 const userRouter = require('./routes/users');
@@ -11,6 +10,9 @@ const { auth } = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const NotFound = require('./errors/NotFound');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+// const cors = require('./middlewares/cors');
+
+const cors = require('cors');
 
 const options = {
   origin: [
@@ -64,7 +66,7 @@ app.post('/signup', celebrate({
   }),
 }), createUser);
 
-app.use('*', (req, res, next) => {
+app.use((req, res, next) => {
   const error = new NotFound('Страница не найдена');
   next(error);
 });
