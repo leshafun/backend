@@ -1,0 +1,17 @@
+.elements {
+    max-width: 880px;
+    margin: 51px auto 67px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px 17px;
+}
+
+@media screen and (max-width: 880px) {
+    .elements {
+        width: 100%;
+        justify-content: center;
+        margin-top: 36px;
+        margin-bottom: 48px;
+    }
+}
