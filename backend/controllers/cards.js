@@ -47,9 +47,9 @@ const deleteCard = (req, res, next) => {
       }
       Card.findByIdAndRemove(req.params.cardId)
         .then((card) => {
-          res.status(SUCCESS_OK).send({ card })
-            .catch(next);
-        });
+          res.status(SUCCESS_OK).send({ card });
+        })
+        .catch(next);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
