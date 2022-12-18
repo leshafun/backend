@@ -6,6 +6,7 @@ const BadRequest = require('../errors/BadRequest');
 const NotFound = require('../errors/NotFound');
 const { SUCCESS_OK } = require('../utils/constants');
 const { CREATED } = require('../utils/constants');
+
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 // возвращает всех пользователей
@@ -53,7 +54,6 @@ const createUser = (req, res, next) => {
         email,
         password: hash,
       })
-        .catch(next)
         .then((user) => {
           res.status(CREATED).send({
             name: user.name,
