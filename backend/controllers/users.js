@@ -53,6 +53,7 @@ const createUser = (req, res, next) => {
         email,
         password: hash,
       })
+        .catch(next)
         .then((user) => {
           res.status(CREATED).send({
             name: user.name,
